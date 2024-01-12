@@ -15,7 +15,7 @@
         $sql->execute();
         $result=$sql->fetchAll();
     foreach($result as $row){
-        echo '<li>',$row['book_name'],'<li>';
+        echo "<li>",$row['book_name'],"</li>";
                }
 ?>
 </body>
