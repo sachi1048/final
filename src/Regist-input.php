@@ -10,7 +10,7 @@
     <h1>登録</h1>
     <a href="menu.php">トップに戻る</a>
   <form action ="Regist-output.php" method="post">
-    本の名前<inptu type="text" name="book"><br>
+    本の名前<input type="text" name="book"><br>
     作者名<input type="text" name="author"><br>
     <button type="submit">登録</button>
 </body>
