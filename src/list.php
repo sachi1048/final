@@ -11,13 +11,12 @@
 <body>
 <?php
    $pdo=new PDO($connect,USER,PASS);
-        $sql=$pdo->prepare('select book_name FROM book');
-        
-    foreach($sql as $row){
-       /* echo '<form action ="cart-insert.php" method="post">';*/
-        echo '<ul><li>',$row['book_name'],'<li>';
-        
-            }
+        $sql=$pdo->query('select book_name from book');
+        $sql->execute();
+        $result=$sql->fetchAll();
+    foreach($result as $row){
+        echo '<li>',$row['book_name'],'<li>';
+               }
 ?>
 </body>
 </html>
