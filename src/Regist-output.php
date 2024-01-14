@@ -10,19 +10,31 @@
 <body>
     <?php
         $pdo=new PDO($connect,USER,PASS);
-        $sqlbook=$pdo->prepare('insert into book(book_name) values (?)');
+        $sqlCheckAuthor = $pdo->prepare('select author_id from author where author = ?');
+        $sqlCheckAuthor->execute([$_POST['author']]);
+        $existingAuthor = $sqlCheckAuthor->fetch(PDO::FETCH_ASSOC);
 
-        $sqlauthor=$pdo->prepare('insert into author(author) values (?)');
-
-        if(empty($_POST['book'])){
-            echo '本の名前を入力してください';
-        }else if(empty($_POST['author'])){
-            echo '作者名を入力してください';
-        }else if($sqlbook->execute([$_POST['book']]) && $sqlauthor->execute([$_POST['author']])){
+        if ($existingAuthor) {
+            $authorId = $existingAuthor['author_id'];
+        } else {
+            $sqlInsertAuthor = $pdo->prepare('insert into author (author) values (?)');
+            if ($sqlInsertAuthor->execute([$_POST['author']])) {
+                $authorId = $pdo->lastInsertId();
+            } else {
+                echo '作者の追加ができませんでした';
+                exit; 
+            }
+        }
+        
+    
+        $sqlInsertBook = $pdo->prepare('insert into book (book_name, author_id) values (?, ?)');
+        if ($sqlInsertBook->execute([$_POST['book'], $authorId])) {
             echo '追加しました';
-        }else{
+        } else {
             echo '追加できませんでした';
         }
+        
+        
         ?>
 </body>
 </html>

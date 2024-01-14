@@ -13,14 +13,16 @@
 <?php
 
    $pdo=new PDO($connect,USER,PASS);
-        $sql=$pdo->query('select * from book');
+        $sql=$pdo->query('select book.book_id, book.book_name, author.author
+        from book
+        join author on book.author_id = author.author_id');
         $sql->execute();
         $result=$sql->fetchAll();
+
     foreach($result as $row){
         echo '<ul>';
-        echo '<li>',$row['book_id'];
-        echo ':',$row['book_name'];
-        echo ':',$row['author_id'],'</li>';
+        echo '<li>',$row['book_name'];
+        echo ':',$row['author'],'</li>';
         echo '</ul>';
                }
 ?>
