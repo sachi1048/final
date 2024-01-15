@@ -9,11 +9,11 @@
     <title>Document</title>
 </head>
 <body>
-      <h1>一覧</h1>
+      <h1>削除</h1>
       <a href="menu.php">トップに戻る</a>
-      <div class="id">書籍番号</div>
-      <div class="book">書名</div>
-      <div class="a">作者名</div>
+      
+      <table>
+        <tr><th>書籍番号</th><th>書名</th><th>作者名</th></tr>
   <?php
   
      $pdo=new PDO($connect,USER,PASS);
@@ -24,20 +24,18 @@
           $result=$sql->fetchAll();
   
       foreach($result as $row){
-        echo '<form action="update-output.php" method="post">';
-        echo '<intpu type="hidden" name="book_id" value="',$row['book_id'],'">';
-        echo '<div class="id">',$row['book_id'],'</div>';
-        echo '<div class="book">';
-        echo '<input type="text" name="book_name" value="',$row['book_name'],'">';
-        echo '</div>';
-        echo '<div class="a">';
-        echo '<input type="text" name="author" value="',$row['author'],'">';
-        echo '</div>';
-        echo '<div class="update"><input type="submit" value="更新"></div>';
-        echo '</form>';
+        echo '<tr>';
+        echo '<td>',$row['book_id'],'</td>';
+        echo '<td>',$row['book_name'],'</td>';
+        echo '<td>',$row['author'],'</td>';
+        echo '<td>';
+        echo '<a href="delete-output.php?book_id=',$row['book_id'],'">削除</a>';
+        echo '</td>';
+        echo '</tr>';
         echo "\n";
                  }
   ?>
+  </table>
 
 </body>
 </html>

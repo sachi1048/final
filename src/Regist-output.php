@@ -29,9 +29,10 @@
     
         $sqlInsertBook = $pdo->prepare('insert into book (book_name, author_id) values (?, ?)');
         if ($sqlInsertBook->execute([$_POST['book'], $authorId])) {
-            echo '追加しました';
+            echo '登録しました<br>';
+            echo '<a href="Regist-input.php">登録画面に戻る</a>';
         } else {
-            echo '追加できませんでした';
+            echo '登録できませんでした';
         }
         
         
