@@ -1,6 +1,6 @@
 <?php require 'db-connect.php';?>
 <?php require 'header.php';?>
-<?php require 'menu.php';?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
