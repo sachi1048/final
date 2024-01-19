@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1>作者別</h1>
-     
+     <h4 class="mi"><span>作者名を選択すると、作者ごとの書籍一覧を表示できます</span></h4>
 <?php
   $pdo=new PDO($connect,USER,PASS);
   $sql=$pdo->query('select distinct book.author_id,author.author

@@ -5,17 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/update.css">
     <title>Document</title>
 </head>
 <body>
       <h1>更新</h1>
-      <a href="menu.php">トップに戻る</a>
-      <div class="id">書籍番号</div>
-      <div class="book">書名</div>
-      <div class="a">作者名</div>
-
+      <h4 class="mi"><span>テキストボックスから書名を、セレクトボックスから作者名を変更できます</span></h4>
+     <div class="all">
   
   <?php
+  
   try {
       $pdo = new PDO($connect, USER, PASS);
 
@@ -28,12 +27,14 @@
 
       foreach ($resultBooks as $row) {
           echo '<form action="update-output.php" method="post">';
+          echo '<p>';
           echo '<input type="hidden" name="book_id" value="', $row['book_id'], '">';
           echo '<div class="id">', $row['book_id'], '</div>';
           echo '<div class="book">';
           echo '<input type="text" name="book_name" value="', $row['book_name'], '">';
           echo '</div>';
           echo '<div class="a">';
+          echo '<label class="select">';
           echo '<select name="author">';
 
           $sqlAuthors = 'SELECT author_id, author FROM author';
@@ -50,15 +51,20 @@
           }
 
           echo '</select>';
+          echo '</label>';
           echo '</div>';
-          echo '<div class="update"><input type="submit" value="更新"></div>';
+          echo '<div class=koushin><input type="submit" value="更新" class="update"></div>';
+          echo '------------------------------------';
           echo '</form>';
+          echo '</p>';
           echo "\n";
       }
   } catch (PDOException $e) {
       echo 'Error: ' . $e->getMessage();
   }
   ?>
+  </div>
+  <div class="button"><a href="menu.php">トップに戻る</a></button>
 
 </body>
 </html>

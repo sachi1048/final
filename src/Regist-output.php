@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/regist-output.css">
     <title>Document</title>
 </head>
 <body>
@@ -29,8 +30,8 @@
     
         $sqlInsertBook = $pdo->prepare('insert into book (book_name, author_id) values (?, ?)');
         if ($sqlInsertBook->execute([$_POST['book'], $authorId])) {
-            echo '登録しました<br>';
-            echo '<a href="Regist-input.php">登録画面に戻る</a>';
+            echo '<h1>登録しました</h1><br>';
+            echo '<div class="button"><a href="Regist-input.php">登録画面に戻る</a></div>';
         } else {
             echo '登録できませんでした';
         }

@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/delete-output.css">
     <title>Document</title>
 </head>
 <body>
@@ -13,8 +14,8 @@
         
         $sql=$pdo->prepare('delete from book where book_id=?');
         if($sql->execute([$_GET['book_id']])){
-            echo '削除しました<br>';
-            echo '<a href="delete-input.php">削除画面に戻る</a>';
+            echo '<h1>削除しました</h1><br>';
+            echo '<div class="button"><a href="delete-input.php">削除画面に戻る</a></button>';
         }else {
             echo '削除できませんでした';
         }

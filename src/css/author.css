@@ -65,3 +65,59 @@ ul.list li:hover{
 	background: #71d6f8;
 }
 
+h1 {
+  padding: 1rem 2rem;
+  border-left: 4px solid #000;
+}
+
+.mi {
+  padding: 0.7em 0.5em;
+  text-align: center;
+  position: relative;
+}
+.mi::before, .mi::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  height: 100%;
+  background: #ccc;
+}
+.mi::before {
+  left: 20px;
+  transform: rotate(-28deg);
+}
+.mi::after {
+  right: 20px;
+  transform: rotate(28deg);
+}
+
+.mi span {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.mi span::before, .mi span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  width: 2px;
+  height: 50%;
+  background: #ccc;
+}
+.mi span::before {
+  left: 10px;
+  transform: rotate(-42deg);
+}
+.mi span::after {
+  right: 10px;
+  transform: rotate(42deg);
+}
+
+
+h4 {
+ margin: 30px;
+ color: #333;
+}

@@ -1,16 +1,16 @@
 <?php require 'db-connect.php';?>
 <?php require 'header.php';?>
-<?php require 'menu.php';?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/author-output.css">
     <title>Document</title>
 </head>
 <body>
 <h1>書名</h1>
-      <a href="author.php">作者画面に戻る</a>
+      
 <?php
 
 if(isset($_GET['author_id'])){
@@ -21,7 +21,7 @@ if(isset($_GET['author_id'])){
   $sql->execute();
   $result=$sql->fetchAll();
  if($result){
-    echo '<ul>';
+    echo '<ul class="list">';
     foreach($result as $row){
         echo '<li>'.$row['book_name'].'</li>';
     }
@@ -38,6 +38,7 @@ if(isset($_GET['author_id'])){
 
   
 ?>
+<div class="button"><a href="author.php" >作者画面に戻る</a></div>
 </body>
 </html>
 <?php require 'footer.php';?>

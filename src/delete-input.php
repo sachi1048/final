@@ -6,13 +6,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/delete.css">
     <title>Document</title>
 </head>
 <body>
       <h1>削除</h1>
-      <a href="menu.php">トップに戻る</a>
       
-      <table>
+      
+      <table class="table">
         <tr><th>書籍番号</th><th>書名</th><th>作者名</th></tr>
   <?php
   
@@ -36,6 +37,7 @@
                  }
   ?>
   </table>
+ <div class="top"> <div class="button"><a href="menu.php">トップに戻る</a></div></div>
 
 </body>
 </html>
